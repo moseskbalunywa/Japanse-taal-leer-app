@@ -1,0 +1,168 @@
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Cream/yellow background */
+.background {
+  position: absolute;
+  inset: 0;
+  background-color: #fff8dc;
+}
+
+/* Gradient element base styling */
+.gradient-element {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    #fe00b7 0%,
+    #e90fc6 9%,
+    #d21ed6 19%,
+    #b830e8 30%,
+    #9747ff 44%
+  );
+  transition: all 0.8s ease-in-out;
+}
+
+/* Animation states */
+/* State 0: Half circle at bottom */
+.gradient-element.state-0 {
+  height: 30vh;
+  bottom: 0;
+  border-top-left-radius: 100% 100%;
+  border-top-right-radius: 100% 100%;
+}
+
+/* State 1: Half height with text */
+.gradient-element.state-1 {
+  height: 50vh;
+  bottom: 0;
+  border-top-left-radius: 100% 100%;
+  border-top-right-radius: 100% 100%;
+}
+
+/* State 2: Full screen gradient */
+.gradient-element.state-2 {
+  height: 100vh;
+  bottom: 0;
+  border-radius: 0;
+}
+
+/* State 3: Full screen with white text */
+.gradient-element.state-3 {
+  height: 100vh;
+  bottom: 0;
+  border-radius: 0;
+}
+
+/* Text styling - now with fixed positions */
+.text-element {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 900;
+  font-size: 50px !important;
+  z-index: 10;
+}
+
+/* Text styles with fixed positions */
+.pink-text {
+  top: 10%;
+  background: linear-gradient(to bottom, #9747ff, #d45cd7, #f88ec1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 200px;
+
+}
+
+.white-text {
+  top: 10%;
+  color: #fff8f8;
+  margin-top: 200px;
+}
+/* Responsive styles - UPDATED FOR IPHONE 13 PRO */
+/* For mobile phones in portrait mode */
+@media (max-width: 480px) {
+  .text-element {
+    font-size: 40px;
+    letter-spacing: 0.5px;
+    /* Adjusted to place text on top of half circle in state-0 */
+    margin-top: 180px;
+  }
+  
+  /* Adjust circle dimensions for better appearance on iPhone 13 Pro */
+  .gradient-element.state-0 {
+    height: 35vh;
+    border-top-left-radius: 100% 70%;
+    border-top-right-radius: 100% 70%;
+  }
+  
+  .gradient-element.state-1 {
+    border-top-left-radius: 100% 50%;
+    border-top-right-radius: 100% 50%;
+  }
+  
+  /* Specifically targeting iPhone 13 Pro dimensions */
+  @media (min-width: 390px) and (max-height: 844px) {
+    .text-element {
+      font-size: 42px;
+      margin-top: 185px;
+    }
+    
+    .gradient-element.state-0 {
+      height: 32vh;
+    }
+  }
+}
+
+/* For small mobile phones */
+@media (max-width: 320px) {
+  .text-element {
+    font-size: 7vw;
+    margin-top: 150px;
+  }
+  
+  .gradient-element.state-0 {
+    height: 30vh;
+  }
+}
+
+/* For tablets and larger phones */
+@media (min-width: 481px) and (max-width: 768px) {
+  .text-element {
+    font-size: 4vw;
+  }
+  
+  .gradient-element.state-0,
+  .gradient-element.state-1 {
+    border-top-left-radius: 100% 80%;
+    border-top-right-radius: 100% 80%;
+  }
+}
+
+/* For landscape orientation on mobile */
+@media (max-height: 480px) and (orientation: landscape) {
+  .text-element {
+    font-size: 4vh;
+    margin-top: 100px;
+  }
+  
+  .gradient-element.state-0 {
+    height: 60vh;
+  }
+}
+
+/* For extra large screens */
+@media (min-width: 1200px) {
+  .text-element {
+    font-size: 1.8rem;
+  }
+}
